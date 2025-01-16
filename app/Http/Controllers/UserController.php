@@ -9,11 +9,18 @@ class UserController extends Controller
 {
     public function index () 
     {
-        return 'Hello World!';
+
+        $users = User::all();
+        return view('users.index', [
+            'message' => 'Hello World',
+            'users' => $users
+        ]);
     }
 
     public function show (User $user) 
     {
-        return $user;
+        return view('users.show', [
+            'user' => $user
+        ]);
     }
 }
