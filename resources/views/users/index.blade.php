@@ -7,7 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>{{$message}}</h2>
-    {{dd($users)}}
+    <h1>{{$message}}</h1>
+
+    @foreach ($users as $user)
+        <div>{{$user->name}} - ({{$user->email}})</div>
+    @endforeach
+
 </body>
 </html>
