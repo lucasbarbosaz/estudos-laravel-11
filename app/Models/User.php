@@ -49,4 +49,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class); // um usuário tem um perfil (um para um)
     }
+
+    public function posts() {
+        return $this->hasMany(Post::class); // um usuário tem muitos posts (um para muitos)
+    }
 }

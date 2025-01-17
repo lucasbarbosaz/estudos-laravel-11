@@ -7,13 +7,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
-    $user = User::with('profile')->find(1);
-    $user->profile()->create([
-        'type' => 'PJ',
-        'document_number' => '1234567890',
-    ]);
+    //1 > N;
+    $user = User::with('posts', 'profile')->find(1);
+    $user->posts()->create([
+        'title' => 'meu ultimo post',
+        'body' => 'conteudo do post',
+    ]); 
 
-    dd($user->profile->document_number);
+    dd($user);
 
     return view('welcome');
 });
