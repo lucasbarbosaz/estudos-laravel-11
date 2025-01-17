@@ -2,36 +2,18 @@
 
 use App\Http\Controllers\UserController;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
+    $user = User::with('profile')->find(1);
+    $user->profile()->create([
+        'type' => 'PJ',
+        'document_number' => '1234567890',
+    ]);
 
-    $post = Post::find(2);
-    $post->delete();
-
-    // $input = [
-    //     'title' => 'Meu novo titulo vindo do input',
-    //     'body' => 'Meu novo corpo vindo do input'
-    // ];
-
-
-    // $post = Post::find(1);
-
-    // $post->fill($input);
-    // $post->save();
-
-    // $post->title = 'Meu novo titulo';
-    // $post->save();
-
-    //para buscar um registro
-    // $post = Post::find(1);
-    // $post = Post::where('title', 'Meu primeiro post')->where()->first();
-
-    //para buscar todos os registros ou usar o metodo all() para buscar todos os registros
-    //$post = Post::where('title', 'LIKE', '%primeiro%')->get();
-
-    dd($post);
+    dd($user->profile->document_number);
 
     return view('welcome');
 });
