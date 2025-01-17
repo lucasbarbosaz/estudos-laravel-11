@@ -6,14 +6,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
-    // $post = new Post();
-    // $post->title = 'Meu primeiro post';
-    // $post->body = 'Texto Texto';
-    // $post->save();
-    $post = Post::create([
-        'title' => 'Meu segundo post',
-        'body' => 'Texto Texto'
-    ]);
+    //para buscar um registro
+    // $post = Post::find(1);
+    // $post = Post::where('title', 'Meu primeiro post')->where()->first();
+
+    //para buscar todos os registros ou usar o metodo all() para buscar todos os registros
+    $post = Post::where('title', 'LIKE', '%primeiro%')->get();
 
     dd($post);
 
