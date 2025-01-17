@@ -7,16 +7,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
 
 
-    $input = [
-        'title' => 'Meu novo titulo vindo do input',
-        'body' => 'Meu novo corpo vindo do input'
-    ];
+    $post = Post::find(2);
+    $post->delete();
+
+    // $input = [
+    //     'title' => 'Meu novo titulo vindo do input',
+    //     'body' => 'Meu novo corpo vindo do input'
+    // ];
 
 
-    $post = Post::find(1);
+    // $post = Post::find(1);
 
-    $post->fill($input);
-    $post->save();
+    // $post->fill($input);
+    // $post->save();
 
     // $post->title = 'Meu novo titulo';
     // $post->save();
