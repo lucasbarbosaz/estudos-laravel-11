@@ -6,12 +6,27 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
+
+    $input = [
+        'title' => 'Meu novo titulo vindo do input',
+        'body' => 'Meu novo corpo vindo do input'
+    ];
+
+
+    $post = Post::find(1);
+
+    $post->fill($input);
+    $post->save();
+
+    // $post->title = 'Meu novo titulo';
+    // $post->save();
+
     //para buscar um registro
     // $post = Post::find(1);
     // $post = Post::where('title', 'Meu primeiro post')->where()->first();
 
     //para buscar todos os registros ou usar o metodo all() para buscar todos os registros
-    $post = Post::where('title', 'LIKE', '%primeiro%')->get();
+    //$post = Post::where('title', 'LIKE', '%primeiro%')->get();
 
     dd($post);
 
