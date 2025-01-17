@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\UploadedFile;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -32,10 +33,16 @@ class UserController extends Controller
         $input = $request->validate([
             'name' => 'required|string',
             'email' => 'required|email',
-            'password' => 'required|min:6'
+            'password' => 'required|min:6',
+            'avatar' => 'file'
         ]);
 
-        User::create($input);
+        if (!empty($input['avatar']) && $input['avatar']->isValid()) {
+            $input['avatar']->store();
+        }
+
+        dd($input);
+        //User::create($input);
 
         return redirect()->back();
     }

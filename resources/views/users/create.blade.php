@@ -9,7 +9,11 @@
             <div> {{ $error }} </div>
         @endforeach
     @endif
-    <form action="{{ route('users.store') }}" method="POST">
+    <form 
+        action="{{ route('users.store') }}" 
+        method="POST"
+        enctype="multipart/form-data"
+    >
         @csrf
         @method('POST')
 
@@ -26,6 +30,11 @@
         <div>
             <label for"">Senha</label>
             <input type="password" name="password">
+        </div>
+
+        <div>
+            <label for="">Avatar</label>
+            <input type="file" name="avatar">
         </div>
 
         <div>
